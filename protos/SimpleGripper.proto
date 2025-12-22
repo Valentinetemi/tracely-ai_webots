@@ -1,0 +1,110 @@
+#VRML_SIM R2023b utf8
+PROTO SimpleGripper [
+  field SFVec3f    translation      0 0 0
+  field SFRotation rotation         0 1 0 0
+] {
+  Transform {
+    translation IS translation
+    rotation IS rotation
+    children [
+      DEF GRIPPER_BASE Shape {
+        appearance Appearance {
+          material Material {
+            diffuseColor 0.2 0.2 0.2
+          }
+        }
+        geometry Box {
+          size 0.05 0.05 0.02
+        }
+      }
+
+      DEF LEFT_FINGER Transform {
+        translation -0.03 0 0.04
+        children [
+          Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Box {
+              size 0.015 0.03 0.08
+            }
+          }
+        ]
+      }
+
+      DEF RIGHT_FINGER Transform {
+        translation 0.03 0 0.04
+        children [
+          Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Box {
+              size 0.015 0.03 0.08
+            }
+          }
+        ]
+      }
+
+      DEF LEFT_JOINT HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 1 0 0
+          anchor -0.03 0 0.04
+        }
+        device [
+          RotationalMotor { name "left_finger_joint" }
+        ]
+        endPoint Solid {
+          translation -0.03 0 0.04
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0 0 1
+                }
+              }
+              geometry Box {
+                size 0.015 0.03 0.08
+              }
+            }
+          ]
+          boundingObject Box {
+            size 0.015 0.03 0.08
+          }
+        }
+      }
+
+      DEF RIGHT_JOINT HingeJoint {
+        jointParameters HingeJointParameters {
+          axis -1 0 0
+          anchor 0.03 0 0.04
+        }
+        device [
+          RotationalMotor { name "right_finger_joint" }
+        ]
+        endPoint Solid {
+          translation 0.03 0 0.04
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0 0 1
+                }
+              }
+              geometry Box {
+                size 0.015 0.03 0.08
+              }
+            }
+          ]
+          boundingObject Box {
+            size 0.015 0.03 0.08
+          }
+        }
+      }
+    ]
+  }
+}
