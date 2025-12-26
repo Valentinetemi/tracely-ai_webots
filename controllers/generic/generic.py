@@ -11,12 +11,12 @@ t = 0.0
 
 # UR5e joints
 joint_names = [
-    "shoulder_pan_joint",
-    "shoulder_lift_joint",
-    "elbow_joint",
-    "wrist_1_joint",
-    "wrist_2_joint",
-    "wrist_3_joint"
+    "shoulder_pan_joint", #rotate left/right
+    "shoulder_lift_joint", #rotate up/down
+    "elbow_joint", #bends arm
+    "wrist_1_joint", #wrist up/down
+    "wrist_2_joint", #wrist rotate
+    "wrist_3_joint" #wrist rotate
 ]
 
 joints = []
