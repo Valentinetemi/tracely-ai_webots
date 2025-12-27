@@ -45,3 +45,7 @@ while robot.step(timestep) != -1:
     joints[1].setPosition(-1.2 + 0.3 * math.sin(t))
     joints[2].setPosition(1.6 + 0.3 * math.sin(t))
  
+ 
+ #botle
+ 
+ 
